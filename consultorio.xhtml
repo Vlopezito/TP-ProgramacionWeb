@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Consultorios:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Consultorios</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idConsultorio" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idConsultorio"
+				styleClass="form-control" value="#{consultorioController.consultorio.idConsultorio}"
+				required="true" />
+				
+			<h:outputLabel for="nombre" value="Nombre "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nombre"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.nombre}" maxlength="50"
+				required="true" />
+
+			<h:outputLabel for="ruc" value="RUC "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="ruc"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.RUC}" maxlength="11"
+				required="true" />
+				
+			<h:outputLabel for="direccion" value="Direccion "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="direccion"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.direccion}" maxlength="50"
+				required="true" />
+						
+			<h:outputLabel for="distrito" value="Distrito "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="distrito"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.distrito}" maxlength="25"
+				required="true" />
+			
+			<h:outputLabel for="cuidad" value="Cuidad "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="cuidad"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.cuidad}" maxlength="25"
+				required="true" />
+				
+			<h:outputLabel for="pais" value="Pais "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="pais"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.pais}" maxlength="25"
+				required="true" />
+				
+				<h:outputLabel for="descripcion" value="descripcion "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="descripcion"
+				styleClass="form-control"
+				value="#{consultorioController.consultorio.descripcion}" maxlength="80"
+				required="true" />
+
+			<br />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{consultorioController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listConsultorio?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listConsultorio?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -17,10 +17,10 @@
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="idDuenomascota" value="Id " styleClass="control-label" />
+			<h:outputLabel for="idTiendapetshop" value="Id " styleClass="control-label" />
 
-			<p:inputText autocomplete="off" id="idDuenomascota"
-				styleClass="form-control" value="#{duenomascotaController.duenomascota.idDuenomascota}"
+			<p:inputText autocomplete="off" id="idTiendapetshop"
+				styleClass="form-control" value="#{tiendapetshopController.tiendapetshop.idTiendapetshop}"
 				required="true" />
 				
 			<h:outputLabel for="nombre" value="Nombre "
@@ -28,51 +28,34 @@
 
 			<p:inputText autocomplete="off" id="nombre"
 				styleClass="form-control"
-				value="#{duenomascotaController.duenomascota.nombre}" maxlength="50"
+				value="#{tiendapetshopController.tiendapetshop.nombre}" maxlength="50"
 				required="true" />
 
-			<h:outputLabel for="apellido" value="Apellido "
+			<h:outputLabel for="ruc" value="RUC "
 				styleClass="control-label" />
 
-			<p:inputText autocomplete="off" id="apellido"
+			<p:inputText autocomplete="off" id="ruc"
 				styleClass="form-control"
-				value="#{duenomascotaController.duenomascota.apellido}" maxlength="50"
-				required="true" />
-				<h:outputLabel for="username" value="Username "
-				styleClass="control-label" />
-
-			<p:inputText autocomplete="off" id="username"
-				styleClass="form-control"
-				value="#{duenomascotaController.duenomascota.username}" maxlength="30"
-				required="true" />
-						
-			<h:outputLabel for="dni" value="DNI "
-				styleClass="control-label" />
-				
-			<p:inputText autocomplete="off" id="dni"
-				styleClass="form-control"
-				value="#{duenomascotaController.duenomascota.dni}" maxlength="8"
-				required="true" />
-			
-			<h:outputLabel for="email" value="Email "
-				styleClass="control-label" />
-
-			<p:inputText autocomplete="off" id="email"
-				styleClass="form-control"
-				value="#{duenomascotaController.duenomascota.email}" maxlength="60"
+				value="#{tiendapetshopController.tiendapetshop.RUC}" maxlength="11"
 				required="true" />
 				
+			<h:outputLabel for="descripcion" value="Descripcion "
+				styleClass="control-label" />
 
+			<p:inputText autocomplete="off" id="descripcion"
+				styleClass="form-control"
+				value="#{tiendapetshopController.tiendapetshop.descripcion}" maxlength="80"
+				required="true" />
 
 			<br />
 
 
 			<p:commandButton value="Grabar"
-				actionListener="#{duenomascotaController.insert()}"
+				actionListener="#{tiendapetshopController.insert()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listDuenomascota?faces-redirect=true" />
+				action="listTiendapetshop?faces-redirect=true" />
 			<p:commandButton value="Cancelar"
-				action="listDuenomascota?faces-redirect=true" immediate="true"
+				action="listTiendapetshop?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Sucursales:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Sucursal</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idSucursal" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idSucursal"
+				styleClass="form-control" value="#{sucursalController.sucursal.idSucursal}"
+				required="true" />
+				
+			<h:outputLabel for="direccion" value="Direccion "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="direccion"
+				styleClass="form-control"
+				value="#{sucursalController.sucursal.direccion}" maxlength="50"
+				required="true" />
+
+			<h:outputLabel for="distrito" value="Distrito "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="distrito"
+				styleClass="form-control"
+				value="#{sucursalController.sucursal.distrito}" maxlength="25"
+				required="true" />
+				
+			<h:outputLabel for="cuidad" value="Cuidad "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="cuidad"
+				styleClass="form-control"
+				value="#{sucursalController.sucursal.cuidad}" maxlength="25"
+				required="true" />
+						
+			<h:outputLabel for="pais" value="Pais "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="pais"
+				styleClass="form-control"
+				value="#{sucursalController.sucursal.pais}" maxlength="25"
+				required="true" />
+			
+			<h:outputLabel for="descripcion" value="Descripcion "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="descripcion"
+				styleClass="form-control"
+				value="#{sucursalController.sucursal.descripcion}" maxlength="80"
+				required="true" />
+					
+			<p:outputLabel for="cboTiendapetshop" value="Tiendapetshop" />
+			<p:selectOneMenu id="cboTiendapetshop" value="#{sucursalController.sucursal.tiendapetshop}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{sucursalController.listaTiendapetshops}" var = "a" 
+					itemLabel="#{a.nombre}" itemValue="#{a}"/>
+			</p:selectOneMenu> 		
+			
+			<br />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{sucursalController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listSucursal?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listSucursal?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

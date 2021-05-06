@@ -8,11 +8,11 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Listado de Mascotas:.
+        .:Listado de Sucursales:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Mascotas</span>
+		<span>Sucursales</span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -23,7 +23,7 @@
 					<div class="form-group box-main-btn">
 						<span style="display: block; height: 30px;"></span>
 						<p:commandButton value="Nuevo"
-							action="#{mascotaController.nuevoMascota()}"
+							action="#{sucursalController.nuevoSucursal()}"
 							styleClass="btn btn-primary" ajax="false" />
 					</div>
 				</div>
@@ -32,48 +32,44 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-						<p:dataTable id="lstMascota" var="mas"
-							value="#{mascotaController.listaMascotas}" paginator="true"
+						<p:dataTable id="lstSucursal" var="sur"
+							value="#{sucursalController.listaSucursales}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{mas.idMascota}">
-								<h:outputText value="#{mas.idMascota}" />
+							<p:column headerText="Id" sortBy="#{sur.idSucursal}">
+								<h:outputText value="#{sur.idSucursal}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{mas.nombre}">
-								<h:outputText value="#{mas.nombre}" />
+							<p:column headerText="Direccion" sortBy="#{sur.direccion}">
+								<h:outputText value="#{sur.direccion}" />
 							</p:column>
 							
-							<p:column headerText="Animal" sortBy="#{mas.animal}">
-								<h:outputText value="#{mas.animal}" />
+							<p:column headerText="Distrito" sortBy="#{sur.distrito}">
+								<h:outputText value="#{sur.distrito}" />
 							</p:column>
 							
-							<p:column headerText="Raza" sortBy="#{mas.raza}">
-								<h:outputText value="#{mas.raza}" />
+							<p:column headerText="Cuidad" sortBy="#{sur.cuidad}">
+								<h:outputText value="#{sur.cuidad}" />
 							</p:column>
 							
-							<p:column headerText="Color" sortBy="#{mas.color}">
-								<h:outputText value="#{mas.color}" />
+							<p:column headerText="Pais" sortBy="#{sur.pais}">
+								<h:outputText value="#{sur.pais}" />
 							</p:column>
 							
-							<p:column headerText="Descripcion" sortBy="#{mas.descripcion}">
-								<h:outputText value="#{mas.descripcion}" />
+							<p:column headerText="Descripcion" sortBy="#{sur.descripcion}">
+								<h:outputText value="#{sur.descripcion}" />
 							</p:column>
 							
-							<p:column headerText="Genero" sortBy="#{mas.genero}">
-								<h:outputText value="#{mas.genero}" />
-							</p:column>
-							
-							<p:column headerText="Dueño Mascota">
-								<h:outputText value="#{mas.duenomascota.nombre}"/>
+							<p:column headerText="Tienda Petshop">
+								<h:outputText value="#{sur.tiendapetshop.nombre}"/>
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">
-								<h:commandLink action="listMascota" value="Eliminar"
-									actionListener="#{mascotaController.eliminar(mas)}" />
+								<h:commandLink action="listSucursal" value="Eliminar"
+									actionListener="#{sucursalController.eliminar(sur)}" />
 							</p:column>
 
 						</p:dataTable>

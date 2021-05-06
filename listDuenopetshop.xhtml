@@ -8,11 +8,11 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Listado de Mascotas:.
+        .:Listado de Dueño de petshops:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Mascotas</span>
+		<span>Dueño de petshops</span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -23,7 +23,7 @@
 					<div class="form-group box-main-btn">
 						<span style="display: block; height: 30px;"></span>
 						<p:commandButton value="Nuevo"
-							action="#{mascotaController.nuevoMascota()}"
+							action="#{duenopetshopController.nuevoDuenopetshop()}"
 							styleClass="btn btn-primary" ajax="false" />
 					</div>
 				</div>
@@ -32,48 +32,44 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-						<p:dataTable id="lstMascota" var="mas"
-							value="#{mascotaController.listaMascotas}" paginator="true"
+						<p:dataTable id="lstDuenopetshop" var="due"
+							value="#{duenopetshopController.listaDuenopetshops}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{mas.idMascota}">
-								<h:outputText value="#{mas.idMascota}" />
+							<p:column headerText="Id" sortBy="#{due.idDuenopetshop}">
+								<h:outputText value="#{due.idDuenopetshop}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{mas.nombre}">
-								<h:outputText value="#{mas.nombre}" />
+							<p:column headerText="Nombre" sortBy="#{due.nombre}">
+								<h:outputText value="#{due.nombre}" />
 							</p:column>
 							
-							<p:column headerText="Animal" sortBy="#{mas.animal}">
-								<h:outputText value="#{mas.animal}" />
+							<p:column headerText="Apellido" sortBy="#{due.apellido}">
+								<h:outputText value="#{due.apellido}" />
 							</p:column>
 							
-							<p:column headerText="Raza" sortBy="#{mas.raza}">
-								<h:outputText value="#{mas.raza}" />
+							<p:column headerText="Username" sortBy="#{due.username}">
+								<h:outputText value="#{due.username}" />
 							</p:column>
 							
-							<p:column headerText="Color" sortBy="#{mas.color}">
-								<h:outputText value="#{mas.color}" />
+							<p:column headerText="Dni" sortBy="#{due.dni}">
+								<h:outputText value="#{due.dni}" />
 							</p:column>
 							
-							<p:column headerText="Descripcion" sortBy="#{mas.descripcion}">
-								<h:outputText value="#{mas.descripcion}" />
+							<p:column headerText="Email" sortBy="#{due.email}">
+								<h:outputText value="#{due.email}" />
 							</p:column>
-							
-							<p:column headerText="Genero" sortBy="#{mas.genero}">
-								<h:outputText value="#{mas.genero}" />
-							</p:column>
-							
-							<p:column headerText="Dueño Mascota">
-								<h:outputText value="#{mas.duenomascota.nombre}"/>
+										
+							<p:column headerText="Tienda Petshop">
+								<h:outputText value="#{due.tiendapetshop.nombre}"/>
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">
-								<h:commandLink action="listMascota" value="Eliminar"
-									actionListener="#{mascotaController.eliminar(mas)}" />
+								<h:commandLink action="listDuenopetshop" value="Eliminar"
+									actionListener="#{duenopetshopController.eliminar(due)}" />
 							</p:column>
 
 						</p:dataTable>

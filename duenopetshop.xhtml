@@ -8,19 +8,19 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Registro de Mascotas por Dueño:.
+        .:Registro de Dueños petshops:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Mascotas</span>
+		<span>Dueños de petshops</span>
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="idMascota" value="Id " styleClass="control-label" />
+			<h:outputLabel for="idDuenopetshop" value="Id " styleClass="control-label" />
 
-			<p:inputText autocomplete="off" id="idMascota"
-				styleClass="form-control" value="#{mascotaController.mascota.idMascota}"
+			<p:inputText autocomplete="off" id="idDuenopetshop"
+				styleClass="form-control" value="#{duenopetshopController.duenopetshop.idDuenopetshop}"
 				required="true" />
 				
 			<h:outputLabel for="nombre" value="Nombre "
@@ -28,66 +28,57 @@
 
 			<p:inputText autocomplete="off" id="nombre"
 				styleClass="form-control"
-				value="#{mascotaController.mascota.nombre}" maxlength="50"
+				value="#{duenopetshopController.duenopetshop.nombre}" maxlength="50"
 				required="true" />
 
-			<h:outputLabel for="animal" value="Animal "
+			<h:outputLabel for="apellido" value="Apellido "
 				styleClass="control-label" />
 
-			<p:inputText autocomplete="off" id="animal"
+			<p:inputText autocomplete="off" id="apellido"
 				styleClass="form-control"
-				value="#{mascotaController.mascota.animal}" maxlength="30"
+				value="#{duenopetshopController.duenopetshop.apellido}" maxlength="50"
 				required="true" />
 				
-			<h:outputLabel for="raza" value="Raza "
+			<h:outputLabel for="username" value="Username "
 				styleClass="control-label" />
 
-			<p:inputText autocomplete="off" id="raza"
+			<p:inputText autocomplete="off" id="username"
 				styleClass="form-control"
-				value="#{mascotaController.mascota.raza}" maxlength="30"
+				value="#{duenopetshopController.duenopetshop.username}" maxlength="30"
 				required="true" />
 						
-			<h:outputLabel for="color" value="Color "
+			<h:outputLabel for="dni" value="Dni "
 				styleClass="control-label" />
 				
-			<p:inputText autocomplete="off" id="color"
+			<p:inputText autocomplete="off" id="dni"
 				styleClass="form-control"
-				value="#{mascotaController.mascota.color}" maxlength="30"
+				value="#{duenopetshopController.duenopetshop.dni}" maxlength="8"
 				required="true" />
 			
-			<h:outputLabel for="descripcion" value="Descripcion "
+			<h:outputLabel for="email" value="Email "
 				styleClass="control-label" />
 
 			<p:inputText autocomplete="off" id="email"
 				styleClass="form-control"
-				value="#{mascotaController.mascota.descripcion}" maxlength="80"
-				required="true" />
-				
-			<h:outputLabel for="genero" value="Genero "
-				styleClass="control-label" />
-				
-			<p:inputText autocomplete="off" id="genero"
-				styleClass="form-control"
-				value="#{mascotaController.mascota.genero}" maxlength="30"
+				value="#{duenopetshopController.duenopetshop.email}" maxlength="60"
 				required="true" />
 					
-			<p:outputLabel for="cboDuenomascota" value="Duenomascota" />
-			<p:selectOneMenu id="cboDuenomascota" value="#{mascotaController.mascota.duenomascota}"
+			<p:outputLabel for="cboTiendapetshop" value="Tiendapetshop" />
+			<p:selectOneMenu id="cboTiendapetshop" value="#{duenopetshopController.duenopetshop.tiendapetshop}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{mascotaController.listaDuenomascotas}" var = "a" 
+				<f:selectItems value="#{duenopetshopController.listaTiendapetshops}" var = "a" 
 					itemLabel="#{a.nombre}" itemValue="#{a}"/>
 			</p:selectOneMenu> 		
-				
-
+			
 			<br />
 
 
 			<p:commandButton value="Grabar"
-				actionListener="#{mascotaController.insertar()}"
+				actionListener="#{duenopetshopController.insertar()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listMascota?faces-redirect=true" />
+				action="listDuenopetshop?faces-redirect=true" />
 			<p:commandButton value="Cancelar"
-				action="listMascota?faces-redirect=true" immediate="true"
+				action="listDuenopetshop?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />

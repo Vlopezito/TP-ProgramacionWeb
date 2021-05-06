@@ -8,11 +8,11 @@
 <ui:composition template="master.xhtml">
 
 	<ui:define name="title">
-        .:Listado de Mascotas:.
+        .:Listado de Veterinarios:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Mascotas</span>
+		<span>Veterinarios</span>
 	</ui:define>
 
 	<ui:define name="content">
@@ -23,7 +23,7 @@
 					<div class="form-group box-main-btn">
 						<span style="display: block; height: 30px;"></span>
 						<p:commandButton value="Nuevo"
-							action="#{mascotaController.nuevoMascota()}"
+							action="#{veterinarioController.nuevoVeterinario()}"
 							styleClass="btn btn-primary" ajax="false" />
 					</div>
 				</div>
@@ -32,48 +32,48 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-						<p:dataTable id="lstMascota" var="mas"
-							value="#{mascotaController.listaMascotas}" paginator="true"
+						<p:dataTable id="lstVeterinario" var="vet"
+							value="#{veterinarioController.listaVeterinarios}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{mas.idMascota}">
-								<h:outputText value="#{mas.idMascota}" />
+							<p:column headerText="Id" sortBy="#{vet.idVeterinario}">
+								<h:outputText value="#{vet.idVeterinario}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{mas.nombre}">
-								<h:outputText value="#{mas.nombre}" />
+							<p:column headerText="Nombre" sortBy="#{vet.nombre}">
+								<h:outputText value="#{vet.nombre}" />
 							</p:column>
 							
-							<p:column headerText="Animal" sortBy="#{mas.animal}">
-								<h:outputText value="#{mas.animal}" />
+							<p:column headerText="Apellido" sortBy="#{vet.apellido}">
+								<h:outputText value="#{vet.apellido}" />
 							</p:column>
 							
-							<p:column headerText="Raza" sortBy="#{mas.raza}">
-								<h:outputText value="#{mas.raza}" />
+							<p:column headerText="Username" sortBy="#{vet.username}">
+								<h:outputText value="#{vet.username}" />
 							</p:column>
 							
-							<p:column headerText="Color" sortBy="#{mas.color}">
-								<h:outputText value="#{mas.color}" />
+							<p:column headerText="Dni" sortBy="#{vet.dni}">
+								<h:outputText value="#{vet.dni}" />
 							</p:column>
 							
-							<p:column headerText="Descripcion" sortBy="#{mas.descripcion}">
-								<h:outputText value="#{mas.descripcion}" />
+							<p:column headerText="Email" sortBy="#{vet.email}">
+								<h:outputText value="#{vet.email}" />
 							</p:column>
 							
-							<p:column headerText="Genero" sortBy="#{mas.genero}">
-								<h:outputText value="#{mas.genero}" />
+							<p:column headerText="Nmedico" sortBy="#{vet.nmedico}">
+								<h:outputText value="#{vet.nmedico}" />
 							</p:column>
 							
-							<p:column headerText="Dueño Mascota">
-								<h:outputText value="#{mas.duenomascota.nombre}"/>
+							<p:column headerText="Dueño Veterinario">
+								<h:outputText value="#{vet.consultorio.nombre}"/>
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">
-								<h:commandLink action="listMascota" value="Eliminar"
-									actionListener="#{mascotaController.eliminar(mas)}" />
+								<h:commandLink action="listVeterinario" value="Eliminar"
+									actionListener="#{veterinarioController.eliminar(vet)}" />
 							</p:column>
 
 						</p:dataTable>

@@ -10,11 +10,11 @@
 <ui:composition template="master.xhtml"> 
 	
 	<ui:define name="title">
-		.:Listado de Dueno de Mascotas:.
+		.:Listado de Tiendas Petshops:.
 	</ui:define>
 	
 	<ui:define name="titleCont">
-		<span>Dueño de mascotas</span>
+		<span>Tiendas Petshops</span>
 	</ui:define>
 	
 	<ui:define name="content">
@@ -29,7 +29,7 @@
 								styleClass="control-label" />
 							<p:inputText autocomplete="off" id="name"
 								styleClass="form-control"
-								value="#{duenomascotaController.duenomascota.nombre}" maxlength="45" />
+								value="#{tiendapetshopController.tiendapetshop.nombre}" maxlength="45" />
 						</div>
 					</div>				
 				
@@ -38,15 +38,15 @@
 						<div class="form-group box-main-btn">
 							<span style="display: block; height:30px;"></span>
 							
-								<p:commandButton value="Limpiar" update="lstDuenomascota"
-									actionListener="#{duenomascotaController.clean()}"
+								<p:commandButton value="Limpiar" update="lstTiendapetshop"
+									actionListener="#{tiendapetshopController.clean()}"
 									styleClass="btn btn-default" ajax="false" />
-								<p:commandButton value="Buscar" update="lstDuenomascota"
-									actionListener="#{duenomascotaController.findByName()}"
+								<p:commandButton value="Buscar" update="lstTiendapetshop"
+									actionListener="#{tiendapetshopController.findByName()}"
 									styleClass="btn btn-danger" ajax="true" />						
 							
 							<p:commandButton value="Nuevo"						
-								action="#{duenomascotaController.newDuenomascota()}"
+								action="#{tiendapetshopController.newTiendapetshop()}"
 								styleClass="btn btn-primary ajax=false" />
 						</div>
 					</div>
@@ -57,40 +57,32 @@
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 						
-						<p:dataTable id="lstDuenomascota" var="dma"
-							value="#{duenomascotaController.listaDuenomascotas}" paginator="true"
+						<p:dataTable id="lstTiendapetshop" var="dma"
+							value="#{tiendapetshopController.listaTiendapetshops}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{dma.idDuenomascota}">
-								<h:outputText value="#{dma.idDuenomascota}" />
+							<p:column headerText="Id" sortBy="#{dma.idTiendapetshop}">
+								<h:outputText value="#{dma.idTiendapetshop}" />
 							</p:column>
 
 							<p:column headerText="Nombre" sortBy="#{dma.nombre}">
 								<h:outputText value="#{dma.nombre}" />
 							</p:column>
 							
-							<p:column headerText="Apellido" sortBy="#{dma.apellido}">
-								<h:outputText value="#{dma.apellido}" />
+							<p:column headerText="RUC" sortBy="#{dma.RUC}">
+								<h:outputText value="#{dma.RUC}" />
 							</p:column>
 							
-							<p:column headerText="Username" sortBy="#{dma.username}">
-								<h:outputText value="#{dma.username}" />
-							</p:column>
-							
-							<p:column headerText="DNI" sortBy="#{dma.dni}">
-								<h:outputText value="#{dma.dni}" />
-							</p:column>
-							
-							<p:column headerText="Email" sortBy="#{dma.email}">
-								<h:outputText value="#{dma.email}" />
+							<p:column headerText="Descripcion" sortBy="#{dma.descripcion}">
+								<h:outputText value="#{dma.descripcion}" />
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">
-								<h:commandLink action="listDuenomascota" value="Eliminar"
-									actionListener="#{duenomascotaController.eliminar(dma)}" />
+								<h:commandLink action="listTiendapetshop" value="Eliminar"
+									actionListener="#{tiendapetshopController.eliminar(dma)}" />
 							</p:column>
 							
 						</p:dataTable>
