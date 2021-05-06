@@ -57,35 +57,40 @@
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 						
-						<p:dataTable id="lstDuenomascota" var="cob"
+						<p:dataTable id="lstDuenomascota" var="dma"
 							value="#{duenomascotaController.listaDuenomascotas}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{cob.idDuenomascota}">
-								<h:outputText value="#{cob.idDuenomascota}" />
+							<p:column headerText="Id" sortBy="#{dma.idDuenomascota}">
+								<h:outputText value="#{dma.idDuenomascota}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{cob.nombre}">
-								<h:outputText value="#{cob.nombre}" />
+							<p:column headerText="Nombre" sortBy="#{dma.nombre}">
+								<h:outputText value="#{dma.nombre}" />
 							</p:column>
 							
-							<p:column headerText="Apellido" sortBy="#{cob.apellido}">
-								<h:outputText value="#{cob.apellido}" />
+							<p:column headerText="Apellido" sortBy="#{dma.apellido}">
+								<h:outputText value="#{dma.apellido}" />
 							</p:column>
 							
-							<p:column headerText="Username" sortBy="#{cob.username}">
-								<h:outputText value="#{cob.username}" />
+							<p:column headerText="Username" sortBy="#{dma.username}">
+								<h:outputText value="#{dma.username}" />
 							</p:column>
 							
-							<p:column headerText="DNI" sortBy="#{cob.dni}">
-								<h:outputText value="#{cob.dni}" />
+							<p:column headerText="DNI" sortBy="#{dma.dni}">
+								<h:outputText value="#{dma.dni}" />
 							</p:column>
 							
-							<p:column headerText="Email" sortBy="#{cob.email}">
-								<h:outputText value="#{cob.email}" />
+							<p:column headerText="Email" sortBy="#{dma.email}">
+								<h:outputText value="#{dma.email}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listDuenomascota" value="Eliminar"
+									actionListener="#{duenomascotaController.eliminar(dma)}" />
 							</p:column>
 							
 						</p:dataTable>
