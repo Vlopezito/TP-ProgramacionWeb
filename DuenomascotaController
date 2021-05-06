@@ -18,7 +18,7 @@ public class DuenomascotaController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IDuenomascotaService cS;
+	private IDuenomascotaService dS;
 
 	private Duenomascota duenomascota;
 	List<Duenomascota> listaDuenomascotas;
@@ -36,7 +36,7 @@ public class DuenomascotaController implements Serializable {
 
 	public void insert() {
 		try {
-			cS.insert(duenomascota);
+			dS.insert(duenomascota);
 			this.clean();
 			this.list();
 		}
@@ -47,7 +47,7 @@ public class DuenomascotaController implements Serializable {
 
 	public void list() {
 		try {
-			listaDuenomascotas = cS.list();
+			listaDuenomascotas = dS.list();
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -64,13 +64,13 @@ public class DuenomascotaController implements Serializable {
 			this.list();
 		}
 		else {
-			listaDuenomascotas = this.cS.findByNameDuenomascota(this.getDuenomascota());
+			listaDuenomascotas = this.dS.findByNameDuenomascota(this.getDuenomascota());
 		}
 	}
 
 	public void eliminar(Duenomascota p) {
 		try {
-			cS.eliminar(p.getIdDuenomascota());
+			dS.eliminar(p.getIdDuenomascota());
 			this.list();
 		}
 		catch(Exception ex) {
