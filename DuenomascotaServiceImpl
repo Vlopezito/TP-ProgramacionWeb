@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,8 +14,10 @@ import pe.edu.upc.service.IDuenomascotaService;
 
 @Named 
 @RequestScoped
-public class DuenomascotaServiceImpl implements IDuenomascotaService{
-
+public class DuenomascotaServiceImpl implements IDuenomascotaService, Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private IDuenomascotaDao cD;
 	
@@ -31,5 +34,10 @@ public class DuenomascotaServiceImpl implements IDuenomascotaService{
 	@Override
 	public List<Duenomascota> findByNameDuenomascota(Duenomascota c) {
 		return cD.findByNameDuenomascota(c);
+	}
+	
+	@Override
+	public void eliminar(int idDuenomascota) {
+		cD.eliminar(idDuenomascota);
 	}
 }
