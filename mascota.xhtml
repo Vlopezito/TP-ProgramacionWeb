@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Mascotas por Dueño:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Mascotas</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idMascota" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idMascota"
+				styleClass="form-control" value="#{mascotaController.mascota.idMascota}"
+				required="true" />
+				
+			<h:outputLabel for="nombre" value="Nombre "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nombre"
+				styleClass="form-control"
+				value="#{mascotaController.mascota.nombre}" maxlength="50"
+				required="true" />
+
+			<h:outputLabel for="animal" value="Animal "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="animal"
+				styleClass="form-control"
+				value="#{mascotaController.mascota.animal}" maxlength="30"
+				required="true" />
+				
+			<h:outputLabel for="raza" value="Raza "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="raza"
+				styleClass="form-control"
+				value="#{mascotaController.mascota.raza}" maxlength="30"
+				required="true" />
+						
+			<h:outputLabel for="color" value="Color "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="color"
+				styleClass="form-control"
+				value="#{mascotaController.mascota.color}" maxlength="30"
+				required="true" />
+			
+			<h:outputLabel for="descripcion" value="Descripcion "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="email"
+				styleClass="form-control"
+				value="#{mascotaController.mascota.descripcion}" maxlength="80"
+				required="true" />
+				
+			<h:outputLabel for="genero" value="Genero "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="genero"
+				styleClass="form-control"
+				value="#{mascotaController.mascota.genero}" maxlength="30"
+				required="true" />
+					
+			<p:outputLabel for="cboDuenomascota" value="Duenomascota" />
+			<p:selectOneMenu id="cboDuenomascota" value="#{mascotaController.mascota.duenomascota}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{mascotaController.listaDuenomascotas}" var = "a" 
+					itemLabel="#{a.nombre}" itemValue="#{a}"/>
+			</p:selectOneMenu> 		
+				
+
+			<br />
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{mascotaController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listMascota?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listMascota?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>
