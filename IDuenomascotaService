@@ -10,4 +10,3 @@ public interface IDuenomascotaService {
 	public List<Duenomascota> findByNameDuenomascota(Duenomascota c);
 	public void eliminar(int idDuenoMascota);
 }
-
