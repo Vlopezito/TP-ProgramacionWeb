@@ -13,25 +13,48 @@ import pe.edu.upc.dao.IVeterinarioDao;
 import pe.edu.upc.entity.Veterinario;
 
 public class VeterinarioDaoImpl implements IVeterinarioDao, Serializable {
-
 	private static final long serialVersionUID = 1L;
 	
-	@PersistenceContext(unitName="b")
+	@PersistenceContext(unitName = "a")
 	private EntityManager em;
-
+	
 	@Transactional
 	@Override
 	public void insertar(Veterinario veterinario) {
-		em.persist(veterinario);
+		try {
+			em.persist(veterinario);
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Veterinario> listar() {
 		List<Veterinario> lista = new ArrayList<Veterinario>();
-		Query q =em.createQuery("select v from Veterinario v");
-		lista = (List<Veterinario>) q.getResultList();
+		try {
+			Query q = em.createQuery("select c from Veterinario c"); 
+			lista = (List<Veterinario>) q.getResultList();
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		return lista;
 	}
-
+	
+	@Transactional
+	@Override
+	public void eliminar(int idVeterinario) {
+		Veterinario p = new Veterinario();
+		try {
+			p = em.getReference(Veterinario.class,idVeterinario); 
+			em.remove(p);
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+	}
+	
 }

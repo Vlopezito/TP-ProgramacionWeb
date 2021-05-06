@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IDuenomascotaDao;
-import pe.edu.upc.entity.Duenomascota;
+import pe.edu.upc.dao.IConsultorioDao;
+import pe.edu.upc.entity.Consultorio;
 
-public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
+public class ConsultorioDaoImpl implements Serializable, IConsultorioDao{
 
 	private static final long serialVersionUID = 1L;
 	@PersistenceContext(unitName="a")
@@ -20,9 +20,9 @@ public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
 	
 	@Transactional
 	@Override
-	public void insert(Duenomascota duenomascota) {
+	public void insert(Consultorio consultorio) {
 		try {
-		em.persist(duenomascota);
+		em.persist(consultorio);
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -32,11 +32,11 @@ public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Duenomascota> list() {
-		List<Duenomascota> lista= new ArrayList<Duenomascota>();
+	public List<Consultorio> list() {
+		List<Consultorio> lista= new ArrayList<Consultorio>();
 		try {
-		Query q=em.createQuery("from Duenomascota c");
-		lista=(List<Duenomascota>)q.getResultList();
+		Query q=em.createQuery("from Consultorio c");
+		lista=(List<Consultorio>)q.getResultList();
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -46,20 +46,20 @@ public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Duenomascota> findByNameDuenomascota(Duenomascota c) {
-		List<Duenomascota> lista= new ArrayList<Duenomascota>();
-		Query q=em.createQuery("from Duenomascota c where c.b_nombre like ?1");
+	public List<Consultorio> findByNameConsultorio(Consultorio c) {
+		List<Consultorio> lista= new ArrayList<Consultorio>();
+		Query q=em.createQuery("from Consultorio c where c.b_nombre like ?1");
 		q.setParameter(1, "%" + c.getNombre() + "%");
-		lista=(List<Duenomascota>)q.getResultList();
+		lista=(List<Consultorio>)q.getResultList();
 		return lista;
 	}
 
 	@Transactional
 	@Override
-	public void eliminar(int idDuenomascota) {
-		Duenomascota p = new Duenomascota();
+	public void eliminar(int idConsultorio) {
+		Consultorio p = new Consultorio();
 		try {
-			p = em.getReference(Duenomascota.class,idDuenomascota); 
+			p = em.getReference(Consultorio.class,idConsultorio); 
 			em.remove(p);
 		}
 		catch(Exception ex) {

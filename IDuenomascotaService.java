@@ -8,5 +8,6 @@ public interface IDuenomascotaService {
 	public void insert(Duenomascota duenomascota);
 	public List<Duenomascota> list();
 	public List<Duenomascota> findByNameDuenomascota(Duenomascota c);
-	public void eliminar(int idDuenoMascota);
+	public void eliminar(int idDuenomascota);
 }
+

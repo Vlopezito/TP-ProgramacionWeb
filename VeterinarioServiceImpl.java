@@ -13,11 +13,10 @@ import pe.edu.upc.service.IVeterinarioService;
 
 @Named
 @RequestScoped
-
 public class VeterinarioServiceImpl implements IVeterinarioService, Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	private IVeterinarioDao mD;
 	
@@ -25,11 +24,14 @@ public class VeterinarioServiceImpl implements IVeterinarioService, Serializable
 	public void insertar(Veterinario veterinario) {
 		mD.insertar(veterinario);
 	}
-
+	
 	@Override
 	public List<Veterinario> listar() {
 		return mD.listar();
 	}
-
-
+	
+	@Override
+	public void eliminar(int idVeterinario) {
+		mD.eliminar(idVeterinario);
+	}
 }

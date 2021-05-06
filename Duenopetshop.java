@@ -12,13 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Veterinario")
-public class Veterinario implements Serializable {
+@Table(name="Duenopetshop")
+public class Duenopetshop implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idVeterinario;
+	private int idDuenopetshop;
 	
 	@Column(name="nombre",nullable=false, length=50 )
 	private String b_nombre;
@@ -35,35 +35,31 @@ public class Veterinario implements Serializable {
 	@Column(name="email", nullable=false, length = 60)
 	private String f_email;
 	
-	@Column(name="nmedico", nullable=false, length = 9)
-	private String g_nmedico;
-	
 	@ManyToOne
-	@JoinColumn(name="idConsultorio")
-	private Consultorio consultorio;
+	@JoinColumn(name="idTiendapetshop")
+	private Tiendapetshop tiendapetshop;
 
-	public Veterinario() {
+	public Duenopetshop() {
 		super();
 	}
 
-	public Veterinario(int idVeterinario, String nombre, String apellido, String username, String dni, String email,String nmedico, Consultorio consultorio) {
+	public Duenopetshop(int idDuenopetshop, String nombre, String apellido, String username, String dni, String email, Tiendapetshop tiendapetshop) {
 		super();
-		this.idVeterinario = idVeterinario;
+		this.idDuenopetshop = idDuenopetshop;
 		this.b_nombre = nombre;
 		this.c_apellido = apellido;
 		this.d_username = username;
 		this.e_dni = dni;
 		this.f_email = email;
-		this.g_nmedico = nmedico;
-		this.consultorio = consultorio;
+		this.tiendapetshop = tiendapetshop;
 	}
 
-	public int getIdVeterinario() {
-		return idVeterinario;
+	public int getIdDuenopetshop() {
+		return idDuenopetshop;
 	}
 
-	public void setIdVeterinario(int idVeterinario) {
-		this.idVeterinario = idVeterinario;
+	public void setIdDuenopetshop(int idDuenopetshop) {
+		this.idDuenopetshop = idDuenopetshop;
 	}
 	
 	public String getNombre() {
@@ -102,23 +98,16 @@ public class Veterinario implements Serializable {
 		return f_email;
 	}
 
-	public void setEmail(String nmedico) {
-		this.f_email = nmedico;
-	}
-	
-	public String getNmedico() {
-		return g_nmedico;
+	public void setEmail(String email) {
+		this.f_email = email;
 	}
 
-	public void setNmedico(String nmedico) {
-		this.g_nmedico = nmedico;
-	}
-	public Consultorio getConsultorio() {
-		return consultorio;
+	public Tiendapetshop getTiendapetshop() {
+		return tiendapetshop;
 	}
 
-	public void setConsultorio(Consultorio consultorio) {
-		this.consultorio = consultorio;
+	public void setTiendapetshop(Tiendapetshop tiendapetshop) {
+		this.tiendapetshop = tiendapetshop;
 	}
 
 }

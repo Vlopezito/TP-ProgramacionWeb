@@ -9,10 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IMascotaDao;
-import pe.edu.upc.entity.Mascota;
+import pe.edu.upc.dao.IDuenopetshopDao;
+import pe.edu.upc.entity.Duenopetshop;
 
-public class MascotaDaoImpl implements IMascotaDao, Serializable {
+public class DuenopetshopDaoImpl implements IDuenopetshopDao, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName = "a")
@@ -20,9 +20,9 @@ public class MascotaDaoImpl implements IMascotaDao, Serializable {
 	
 	@Transactional
 	@Override
-	public void insertar(Mascota mascota) {
+	public void insertar(Duenopetshop duenopetshop) {
 		try {
-			em.persist(mascota);
+			em.persist(duenopetshop);
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -31,11 +31,11 @@ public class MascotaDaoImpl implements IMascotaDao, Serializable {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Mascota> listar() {
-		List<Mascota> lista = new ArrayList<Mascota>();
+	public List<Duenopetshop> listar() {
+		List<Duenopetshop> lista = new ArrayList<Duenopetshop>();
 		try {
-			Query q = em.createQuery("select c from Mascota c"); 
-			lista = (List<Mascota>) q.getResultList();
+			Query q = em.createQuery("select c from Duenopetshop c"); 
+			lista = (List<Duenopetshop>) q.getResultList();
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -45,10 +45,10 @@ public class MascotaDaoImpl implements IMascotaDao, Serializable {
 	
 	@Transactional
 	@Override
-	public void eliminar(int idMascota) {
-		Mascota p = new Mascota();
+	public void eliminar(int idDuenopetshop) {
+		Duenopetshop p = new Duenopetshop();
 		try {
-			p = em.getReference(Mascota.class,idMascota); 
+			p = em.getReference(Duenopetshop.class,idDuenopetshop); 
 			em.remove(p);
 		}
 		catch(Exception ex) {
