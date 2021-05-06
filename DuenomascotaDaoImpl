@@ -21,7 +21,12 @@ public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
 	@Transactional
 	@Override
 	public void insert(Duenomascota duenomascota) {
+		try {
 		em.persist(duenomascota);
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		
 	}
 
@@ -29,8 +34,13 @@ public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
 	@Override
 	public List<Duenomascota> list() {
 		List<Duenomascota> lista= new ArrayList<Duenomascota>();
+		try {
 		Query q=em.createQuery("from Duenomascota c");
 		lista=(List<Duenomascota>)q.getResultList();
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		return lista;
 	}
 	
@@ -42,6 +52,19 @@ public class DuenomascotaDaoImpl implements Serializable, IDuenomascotaDao{
 		q.setParameter(1, "%" + c.getNombre() + "%");
 		lista=(List<Duenomascota>)q.getResultList();
 		return lista;
+	}
+
+	@Transactional
+	@Override
+	public void eliminar(int idDuenomascota) {
+		Duenomascota p = new Duenomascota();
+		try {
+			p = em.getReference(Duenomascota.class,idDuenomascota); 
+			em.remove(p);
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 }
