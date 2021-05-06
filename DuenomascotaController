@@ -35,17 +35,28 @@ public class DuenomascotaController implements Serializable {
 	}
 
 	public void insert() {
-		cS.insert(duenomascota);
-		this.clean();
-		this.list();
+		try {
+			cS.insert(duenomascota);
+			this.clean();
+			this.list();
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	public void list() {
-		listaDuenomascotas = cS.list();
+		try {
+			listaDuenomascotas = cS.list();
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	public void clean() {
-		this.init();
+			this.init();
+
 	}
 
 	public void findByName() {
@@ -57,7 +68,17 @@ public class DuenomascotaController implements Serializable {
 		}
 	}
 
-
+	public void eliminar(Duenomascota p) {
+		try {
+			cS.eliminar(p.getIdDuenomascota());
+			this.list();
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	
 	public Duenomascota getDuenomascota() {
 		return duenomascota;
 	}
