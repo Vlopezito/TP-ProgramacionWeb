@@ -10,42 +10,57 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Duenomascota;
+import pe.edu.upc.entity.Mascota;
+
 import pe.edu.upc.service.IDuenomascotaService;
+import pe.edu.upc.service.IMascotaService;
 
 @Named
 @RequestScoped
-public class DuenomascotaController implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class MascotaController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private IDuenomascotaService dS;
-
+	
+	@Inject
+	private IMascotaService mS;
+			
 	private Duenomascota duenomascota;
+	private Mascota mascota;
+	
 	List<Duenomascota> listaDuenomascotas;
-
+	List<Mascota> listaMascotas;
+	
 	@PostConstruct
 	public void init() {
-		this.listaDuenomascotas = new ArrayList<Duenomascota>();
-		this.duenomascota = new Duenomascota();
-		this.list();
+		duenomascota = new Duenomascota();
+		mascota = new Mascota();
+		listaDuenomascotas = new ArrayList<Duenomascota>();
+		listaMascotas = new ArrayList<Mascota>();
+		
+		this.listar();
+		this.listMascota();
 	}
-	public String newDuenomascota() {
-		this.setDuenomascota(new Duenomascota());
-		return "duenomascota.xhtml";
+	
+	public String nuevoMascota() {
+		this.setMascota(new Mascota());
+		return "mascota.xhtml";
 	}
-
-	public void insert() {
+	
+	public void insertar() {
 		try {
-			dS.insert(duenomascota);
-			this.clean();
-			this.list();
+			mS.insertar(mascota);
+			limpiarMascota();
+			this.listMascota();
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-
-	public void list() {
+	
+	public void listar() {
 		try {
 			listaDuenomascotas = dS.list();
 		}
@@ -53,38 +68,44 @@ public class DuenomascotaController implements Serializable {
 			System.out.println(ex.getMessage());
 		}
 	}
-
-	public void clean() {
-			this.init();
-
-	}
-
-	public void findByName() {
-		if (duenomascota.getNombre().isEmpty()) {
-			this.list();
-		}
-		else {
-			listaDuenomascotas = this.dS.findByNameDuenomascota(this.getDuenomascota());
-		}
-	}
-
-	public void eliminar(Duenomascota p) {
+	
+	public void listMascota() {
 		try {
-			dS.eliminar(p.getIdDuenomascota());
-			this.list();
+			listaMascotas = mS.listar();
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}		
+	}
+	
+	public void limpiarMascota() {
+		this.init();
+	}
+	
+	public void eliminar(Mascota mascota) {
+		try {
+			mS.eliminar(mascota.getIdMascota());
+			this.listMascota();
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
-	
+
 	public Duenomascota getDuenomascota() {
 		return duenomascota;
 	}
 
 	public void setDuenomascota(Duenomascota duenomascota) {
 		this.duenomascota = duenomascota;
+	}
+
+	public Mascota getMascota() {
+		return mascota;
+	}
+
+	public void setMascota(Mascota mascota) {
+		this.mascota = mascota;
 	}
 
 	public List<Duenomascota> getListaDuenomascotas() {
@@ -95,4 +116,12 @@ public class DuenomascotaController implements Serializable {
 		this.listaDuenomascotas = listaDuenomascotas;
 	}
 
+	public List<Mascota> getListaMascotas() {
+		return listaMascotas;
+	}
+
+	public void setListaMascotas(List<Mascota> listaMascotas) {
+		this.listaMascotas = listaMascotas;
+	}	
+	
 }
